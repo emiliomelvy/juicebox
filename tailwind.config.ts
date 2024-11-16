@@ -14,6 +14,7 @@ export default {
         foreground: "var(--foreground)",
         "primary-light": "#CDAAFF",
         dark: "#0C0D10",
+        "light-heading": "#FAFAFA",
       },
     },
   },

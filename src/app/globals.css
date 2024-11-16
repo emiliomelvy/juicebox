@@ -19,3 +19,7 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+.swiper-pagination {
+  transform: translate3d(0, 13px, 0) !important;
+}
