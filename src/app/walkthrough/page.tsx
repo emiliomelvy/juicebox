@@ -7,6 +7,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 const CONTENTS: { img: string; description: string }[] = [
   {
@@ -108,14 +109,21 @@ const Walkthrough: React.FC = () => {
         ))}
       </Swiper>
       <div className="flex justify-center mt-12">
-        <button
-          onClick={() => swiperRef.current?.slideNext()}
-          className={`border-[1px] border-white/60 rounded-xl px-32 py-3  ${
-            isLastSlide ? "bg-white text-dark" : "text-light-heading"
-          }`}
-        >
-          {isLastSlide ? "Getting Started" : "Continue"}
-        </button>
+        {isLastSlide ? (
+          <Link
+            href="/multistep-form"
+            className="bg-white text-dark px-32 py-3 rounded-xl"
+          >
+            Getting Started
+          </Link>
+        ) : (
+          <button
+            onClick={() => swiperRef.current?.slideNext()}
+            className="border-[1px] border-white/60 rounded-xl px-32 py-3 text-light-heading"
+          >
+            Continue
+          </button>
+        )}
       </div>
     </>
   );

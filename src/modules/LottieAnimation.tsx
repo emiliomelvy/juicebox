@@ -22,7 +22,7 @@ const LottieAnimation = () => {
     }
   }, []);
 
-  return <div id="lottie-container" style={{ width: 400, height: 400 }}></div>;
+  return <div id="lottie-container" style={{ width: 30, height: 30 }}></div>;
 };
 
 export default LottieAnimation;
