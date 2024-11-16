@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LottieAnimation from "./LottieAnimation";
 import Link from "next/link";
 

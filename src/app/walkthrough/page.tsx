@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { gsap } from "gsap";
 import Image from "next/image";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const CONTENTS: { img: string; description: string }[] = [
@@ -29,17 +28,58 @@ const CONTENTS: { img: string; description: string }[] = [
 
 const Walkthrough: React.FC = () => {
   const swiperRef = useRef<any>(null);
+  const descriptionRef = useRef<HTMLDivElement | null>(null);
   const [isLastSlide, setIsLastSlide] = useState(false);
-
-  const handleNext = () => {
-    if (swiperRef.current) {
-      swiperRef.current.slideNext();
-    }
-  };
 
   const handleSlideChange = (swiper: any) => {
     setIsLastSlide(swiper.activeIndex === CONTENTS.length - 1);
+
+    const descriptionElement = document.querySelector(
+      `.description-${swiper.activeIndex}`
+    ) as HTMLElement;
+
+    if (descriptionElement) {
+      resetText(descriptionElement);
+      animateText(descriptionElement);
+    }
   };
+
+  const resetText = (element: HTMLElement) => {
+    const index = parseInt(element.dataset.index || "0", 10);
+    element.innerHTML = CONTENTS[index].description;
+  };
+
+  const animateText = (element: HTMLElement) => {
+    const words = element.innerHTML.split(" ");
+    element.innerHTML = "";
+
+    words.forEach((word) => {
+      const span = document.createElement("span");
+      span.innerText = word;
+      span.style.display = "inline-block";
+      span.style.color = "rgba(250, 250, 250, 0.5)";
+      element.appendChild(span);
+      element.appendChild(document.createTextNode(" "));
+    });
+
+    gsap.fromTo(
+      element.children,
+      { color: "rgba(250, 250, 250, 0.5)" },
+      {
+        color: "rgba(250, 250, 250, 1)",
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power1.inOut",
+      }
+    );
+  };
+
+  useEffect(() => {
+    if (descriptionRef.current) {
+      resetText(descriptionRef.current);
+      animateText(descriptionRef.current);
+    }
+  }, []);
 
   return (
     <>
@@ -52,22 +92,24 @@ const Walkthrough: React.FC = () => {
         pagination={{ clickable: true }}
         slidesPerView={1}
       >
-        {CONTENTS?.map((item, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <div className="flex justify-center pt-12">
-                <Image alt="slider" src={item.img} width={146} height={155} />
-              </div>
-              <div className="text-white text-2xl text-center py-12 px-10">
-                {item.description}
-              </div>
-            </SwiperSlide>
-          );
-        })}
+        {CONTENTS.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div className="flex justify-center pt-12">
+              <Image alt="slider" src={item.img} width={146} height={155} />
+            </div>
+            <div
+              ref={index === 0 ? descriptionRef : null}
+              className={`text-2xl text-center py-12 px-10 description-${index}`}
+              data-index={index}
+            >
+              {item.description}
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
       <div className="flex justify-center mt-12">
         <button
-          onClick={handleNext}
+          onClick={() => swiperRef.current?.slideNext()}
           className={`border-[1px] border-white/60 rounded-xl px-32 py-3  ${
             isLastSlide ? "bg-white text-dark" : "text-light-heading"
           }`}

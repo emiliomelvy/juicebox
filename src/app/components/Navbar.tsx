@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const path = usePathname();
 
   const handleReRender = () => {
-    window.location.href = "/walkthrough";
+    window.location.reload();
   };
 
   return (
