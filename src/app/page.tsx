@@ -51,26 +51,26 @@ export default function Home() {
           height={290}
           className="gradient-shape"
         />
-        <div className="absolute inset-0 flex flex-col justify-between px-10">
-          <p className="text-element text-left text-white text-sm">
+        <div className="absolute inset-0 flex flex-col justify-between px-10 font-Sohne">
+          <p className="text-element text-left text-white text-xs">
             WA businesses feel confident about future growth
           </p>
-          <p className="text-element text-white text-right text-sm">
+          <p className="text-element text-white text-right text-xs">
             AI can’t replace creativity
           </p>
-          <p className="text-element text-white text-sm">
+          <p className="text-element text-white text-xs">
             Sales measure true success
           </p>
-          <p className="text-element text-white text-right text-sm">
+          <p className="text-element text-white text-right text-xs">
             Human connection drives WA business
           </p>
-          <p className="text-element text-white text-sm">
+          <p className="text-element text-white text-xs pr-32">
             The primary barrier to digital transformation is financial
             investment
           </p>
         </div>
       </div>
-      <div className="text-white p-6 text-3xl text-center main-heading">
+      <div className="text-white p-6 text-3xl text-center main-heading font-Bagoss">
         Compare your thoughts on{" "}
         <span className="bg-gradient-to-r from-[#FABBFF] via-[#B179FF] to-[#6DDDFF] text-transparent bg-clip-text">
           technology
@@ -80,7 +80,7 @@ export default function Home() {
       <div className="flex justify-center my-8">
         <Link
           href="/walkthrough"
-          className="bg-primary-light text-dark rounded-3xl py-5 px-20"
+          className="bg-primary-light text-dark rounded-3xl py-5 px-20 font-Sohne-normal"
         >
           Get a reality check
         </Link>

@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 import LottieAnimation from "@/modules/LottieAnimation";
 import Input from "../components/ui/Input";
+import { useRouter } from "next/navigation";
 
 interface StepTwoProps {
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+  setStep?: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const StepTwo: React.FC<StepTwoProps> = ({ setStep }) => {
+const StepTwo: React.FC<StepTwoProps> = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
 
@@ -24,7 +26,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ setStep }) => {
       setError(validationError);
     } else {
       setError(null);
-      alert("Email validated successfully!");
+      router.push("/results");
     }
   };
 
@@ -34,7 +36,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ setStep }) => {
         <div className="flex justify-center mt-6">
           <LottieAnimation />
         </div>
-        <div className="text-light-heading text-center text-xl px-10 mt-8">
+        <div className="text-light-heading text-center text-xl px-10 mt-8 font-Bagoss">
           How should we contact you? Type in your email address.
         </div>
       </div>

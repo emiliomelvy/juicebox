@@ -16,6 +16,11 @@ export default {
         dark: "#0C0D10",
         "light-heading": "#FAFAFA",
       },
+      fontFamily: {
+        Bagoss: ["Bagoss", "sans-serif"],
+        Sohne: ["Sohne", "sans-serif"],
+        "Sohne-normal": ["Sohne-normal", "sans-serif"],
+      },
     },
   },
   plugins: [],

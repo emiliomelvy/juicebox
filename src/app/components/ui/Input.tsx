@@ -29,6 +29,12 @@ const Input: React.FC<InputProps> = ({
     onClick(value);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleClick(); // Trigger handleClick when Enter is pressed
+    }
+  };
+
   return (
     <div className="flex flex-col items-center space-y-4">
       <div
@@ -50,6 +56,7 @@ const Input: React.FC<InputProps> = ({
           }}
           onFocus={() => setIsFocused(true)}
           onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
           className="bg-transparent outline-none flex-grow text-white text-lg placeholder-gray-400"
         />
         <button

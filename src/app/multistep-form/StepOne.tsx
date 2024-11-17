@@ -24,6 +24,7 @@ const StepOne: React.FC<StepOneProps> = ({ setStep }) => {
       setError(validationError);
     } else {
       setError(null);
+      localStorage.setItem("result", firstName);
       setStep(2);
     }
   };
@@ -34,7 +35,7 @@ const StepOne: React.FC<StepOneProps> = ({ setStep }) => {
         <div className="flex justify-center mt-6">
           <LottieAnimation />
         </div>
-        <div className="text-light-heading text-center text-xl px-10 mt-8">
+        <div className="text-light-heading text-center text-xl px-10 mt-8 font-Bagoss">
           Let’s start with the basics. Type in your first name.
         </div>
       </div>

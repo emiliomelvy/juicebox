@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Bagoss";
+  src: url("./fonts/BagossTRIALVF.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sohne";
+  src: url("./fonts/Sohne-Extraleicht.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sohne-normal";
+  src: url("./fonts/Sohne-Buch.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.swiper-pagination-bullet {
+  background: #ffffff !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #b488f2 !important;
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;

@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperClass } from "swiper";
 import { Pagination } from "swiper/modules";
 import { gsap } from "gsap";
 import Image from "next/image";
@@ -28,11 +29,11 @@ const CONTENTS: { img: string; description: string }[] = [
 ];
 
 const Walkthrough: React.FC = () => {
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
   const descriptionRef = useRef<HTMLDivElement | null>(null);
   const [isLastSlide, setIsLastSlide] = useState(false);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     setIsLastSlide(swiper.activeIndex === CONTENTS.length - 1);
 
     const descriptionElement = document.querySelector(
@@ -100,7 +101,7 @@ const Walkthrough: React.FC = () => {
             </div>
             <div
               ref={index === 0 ? descriptionRef : null}
-              className={`text-2xl text-center py-12 px-10 description-${index}`}
+              className={`text-2xl font-Bagoss text-center py-12 px-10 description-${index}`}
               data-index={index}
             >
               {item.description}
@@ -112,14 +113,14 @@ const Walkthrough: React.FC = () => {
         {isLastSlide ? (
           <Link
             href="/multistep-form"
-            className="bg-white text-dark px-32 py-3 rounded-xl"
+            className="bg-white text-dark px-32 py-4 rounded-2xl font-Sohne-normal"
           >
             Getting Started
           </Link>
         ) : (
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="border-[1px] border-white/60 rounded-xl px-32 py-3 text-light-heading"
+            className="border-[1px] border-white/60 rounded-2xl px-32 py-4 text-light-heading font-Sohne-normal"
           >
             Continue
           </button>

@@ -9,7 +9,7 @@ const MultistepForm: React.FC = () => {
   return (
     <section className="text-white py-10">
       {step === 1 && <StepOne setStep={setStep} />}
-      {step === 2 && <StepTwo setStep={setStep} />}
+      {step === 2 && <StepTwo />}
     </section>
   );
 };
